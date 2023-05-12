@@ -16,14 +16,17 @@ if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
 endif()
 
 # find dependencies
-find_package(ament_cmake REQUIRED)
-find_package(std_msgs REQUIRED)
+
 find_package(rclcpp REQUIRED)
 find_package(rttest REQUIRED)
+find_package(ament_cmake REQUIRED)
+find_package(std_msgs REQUIRED)
 #find_package(rosidl_default_generators REQUIRED)
 
-
+set(dependencies  "rclcpp")
 add_executable(rt_pub_node src/rt_pub_node.cpp)
+
+
 
 
 
@@ -31,6 +34,7 @@ ament_target_dependencies(rt_pub_node rclcpp rttest std_msgs)
 
 install(TARGETS
         rt_pub_node
+
         DESTINATION lib/${PROJECT_NAME}
         )
 
